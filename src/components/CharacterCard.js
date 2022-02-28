@@ -50,11 +50,12 @@ It converts https://rickandmortyapi.com/api/episode/1 & https://rickandmortyapi.
 
   useEffect(() => {
     setName(item.name);
-    for (var j = 0; j < episodes.length; j++) {
+    var episod = "";
+    for (var j = 0; j < item.episode.length; j++) {
       episod =
         String(episod) +
         String(j != 0 ? "," : "") +
-        String(episodes[j].split("/")[5]);
+        String(item.episode[j].split("/")[5]);
     }
 
     setEpisode(episod);
