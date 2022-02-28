@@ -20,6 +20,15 @@ const CharacterCard = ({ item }) => {
   // eslint-disable-next-line
   //jest.useFakeTimers();
   //const [episode,setEpisode]=useState('')
+  //Please uncomment the above line to remove the ESLint Error
+
+  {
+    /*
+fetchEpisodes is used to fetch Episode List from the API. 
+I am passing the string of Episode List to the API Eg. 1,2,3 which indicates that the character has appeared on Episode number 1,2 and 3.
+But there's a catch, when there is single episode, we get an object and if there are multiple episodes, we will get an array. So I am handling it according to Number of Episodes.
+*/
+  }
 
   const fetchEpisodes = async () => {
     axios
@@ -29,12 +38,17 @@ const CharacterCard = ({ item }) => {
           ? setEpisodeList([res.data])
           : setEpisodeList(res.data);
       })
-      .catch(() => Alert.alert("Error"));
+      .catch(() => Alert.alert("Error while fetching Episodes of Character"));
   };
 
+  {
+    /*
+This useEffect is used to refractor the Episode list into the String of Episode Numbers as mentioned in the above comments. 
+It converts https://rickandmortyapi.com/api/episode/1 & https://rickandmortyapi.com/api/episode/2 to 1,2
+*/
+  }
+
   useEffect(() => {
-    var episod = "";
-    var episodes = item.episode;
     setName(item.name);
     for (var j = 0; j < episodes.length; j++) {
       episod =
@@ -45,6 +59,7 @@ const CharacterCard = ({ item }) => {
 
     setEpisode(episod);
   }, [item]);
+
   return (
     <TouchableOpacity
       key={item.id}
@@ -107,15 +122,7 @@ const CharacterCard = ({ item }) => {
         source={{
           uri: item.image,
         }}
-        style={{
-          resizeMode: "contain",
-          height: "100%",
-          width: "100%",
-          flex: 0.75,
-          borderRadius: 10,
-
-          overflow: "hidden",
-        }}
+        style={styles.cardImage}
       />
       <View style={{ margin: 10, justifyContent: "space-evenly", flex: 1 }}>
         <Text style={styles.cardText}>{item.name}</Text>
@@ -165,4 +172,13 @@ const styles = StyleSheet.create({
   },
   cardText: { fontWeight: "700", color: "white", fontSize: 16 },
   cardSubText: { fontWeight: "500", color: "white", fontSize: 14 },
+  cardImage: {
+    resizeMode: "contain",
+    height: "100%",
+    width: "100%",
+    flex: 0.75,
+    borderRadius: 10,
+
+    overflow: "hidden",
+  },
 });
