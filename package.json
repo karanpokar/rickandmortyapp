@@ -10,8 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "axios": "^0.26.0",
+    "optionator": "^0.9.1",
     "react": "17.0.2",
-    "react-native": "0.67.3"
+    "react-native": "0.67.3",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "7.17.5",

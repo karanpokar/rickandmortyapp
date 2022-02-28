@@ -4,7 +4,7 @@
  *
  * @format
  */
-
+// eslint-disable-next-line
 module.exports = {
   transformer: {
     getTransformOptions: async () => ({
